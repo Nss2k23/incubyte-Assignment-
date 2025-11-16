@@ -13,7 +13,7 @@ const SweetCard = ({sweet, onPurchase }) => {
     try {
       // API call to purchase product
       const sweetId = sweet._id || sweet.id;
-      const response = await fetch(`http://localhost:5000/route/product/${sweetId}/purchase`, {
+      const response = await fetch(`https://incubyte-assignment.onrender.com/route/product/${sweetId}/purchase`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -27,7 +27,7 @@ const LogIn = () => {
 
     try {
       // Dummy API call (replace with actual endpoint later)
-      const response = await fetch('http://localhost:5000/route/auth/login', {
+      const response = await fetch('https://incubyte-assignment.onrender.com/route/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

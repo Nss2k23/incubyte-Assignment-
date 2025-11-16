@@ -31,7 +31,7 @@ const Home = () => {
     const fetchSweets = async () => {
       try {
         // Dummy API endpoint - fetch ALL products
-        const response = await fetch('http://localhost:5000/route/product');
+        const response = await fetch('https://incubyte-assignment.onrender.com/route/product');
         const data = await response.json();
         // setSweets(data);
         // setFilteredSweets(data);
