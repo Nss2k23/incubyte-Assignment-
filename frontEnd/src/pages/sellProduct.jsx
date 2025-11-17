@@ -79,7 +79,7 @@ const SellProduct = () => {
       data.append('image', formData.image); // ✅ File object
       data.append('sellerUsername', user.username);
 
-      const response = await fetch('https://incubyte-assignment.onrender.com/route/product', {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/route/product`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -116,7 +116,7 @@ const SellProduct = () => {
       }
 
       const productId = editingProduct._id || editingProduct.id;
-      const response = await fetch(`https://incubyte-assignment.onrender.com/route/product/${productId}`, {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/route/product/${productId}`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -145,7 +145,7 @@ const SellProduct = () => {
   const handleDeleteProduct = async (productId) => {
     if (window.confirm('Are you sure you want to delete this product?')) {
       try {
-        const response = await fetch(`https://incubyte-assignment.onrender.com/route/product/${productId}`, {
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/route/product/${productId}`, {
           method: 'DELETE',
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`,
