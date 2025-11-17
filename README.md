@@ -5,6 +5,8 @@
 - **Backend API:** https://incubyte-assignment.onrender.com
 - **GitHub Repository:** https://github.com/Nss2k23/incubyte-Assignment-
 
+⚠️ **Note:** The application may take a few minutes to load due to cold start on the hosting server.
+
 ---
 ### 🔐 Demo Credentials 
 
