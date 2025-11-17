@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const SweetCard = ({sweet, onPurchase }) => {
+const SweetCard = ({ sweet, onPurchaseRequest }) => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [quantity, setQuantity] = useState(sweet.quantity);
   const isOutOfStock = quantity === 0;
@@ -10,48 +10,27 @@ const SweetCard = ({sweet, onPurchase }) => {
 
     setIsProcessing(true);
 
-    try {
-      // API call to purchase product
-      const sweetId = sweet._id || sweet.id;
-      const response = await fetch(`https://incubyte-assignment.onrender.com/route/product/${sweetId}/purchase`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}`,
-        },
-        body: JSON.stringify({
-          quantity: 1, // Purchase 1 item
-        }),
-      });
+    const sweetId = sweet._id || sweet.id;
 
-      if (!response.ok) {
-        throw new Error('Purchase failed');
-      }
+    const result = await onPurchaseRequest(sweetId); // parent API request
 
-      const data = await response.json();
-      
-      // ✅ Update local state with new quantity
-      setQuantity(data.newQuantity);
-      
-      // ✅ Call parent callback
-      onPurchase(sweetId, data.newQuantity);
-      
-      alert('Purchase successful!');
-    } catch (err) {
-      console.error('Error purchasing product:', err);
-      alert('Failed to complete purchase. Please try again.');
-    } finally {
-      setIsProcessing(false);
+    if (result?.success) {
+      setQuantity(result.newQuantity);
+      alert("Purchase successful!");
+    } else {
+      alert("Failed to complete purchase. Please try again.");
     }
+
+    setIsProcessing(false);
   };
 
-  // Format price with commas
   const formatPrice = (price) => {
     return new Intl.NumberFormat('en-IN').format(price);
   };
 
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300">
+      
       {/* Product Image */}
       <div className="relative w-full h-48 bg-gray-200 overflow-hidden">
         <img
@@ -76,13 +55,22 @@ const SweetCard = ({sweet, onPurchase }) => {
 
         {/* Seller Info */}
         <p className="text-xs text-gray-500 mb-3">
-          Sold by: <span className="font-semibold text-gray-700">{sweet.sellerUsername || 'Unknown'}</span>
+          Sold by:{' '}
+          <span className="font-semibold text-gray-700">
+            {sweet.sellerUsername || 'Unknown'}
+          </span>
         </p>
 
         {/* Price and Quantity */}
         <div className="flex justify-between items-center mb-4">
-          <span className="text-2xl font-bold text-purple-600">₹{formatPrice(sweet.price)}</span>
-          <span className={`text-sm font-medium ${isOutOfStock ? 'text-amber-600' : 'text-green-600'}`}>
+          <span className="text-2xl font-bold text-purple-600">
+            ₹{formatPrice(sweet.price)}
+          </span>
+          <span
+            className={`text-sm font-medium ${
+              isOutOfStock ? 'text-amber-600' : 'text-green-600'
+            }`}
+          >
             {isOutOfStock ? 'Out of Stock' : `${quantity} left`}
           </span>
         </div>
@@ -97,7 +85,11 @@ const SweetCard = ({sweet, onPurchase }) => {
               : 'bg-purple-600 text-white hover:bg-purple-700 active:scale-95'
           }`}
         >
-          {isProcessing ? '⏳ Processing...' : isOutOfStock ? 'Out of Stock' : '🛒 Purchase'}
+          {isProcessing
+            ? '⏳ Processing...'
+            : isOutOfStock
+            ? 'Out of Stock'
+            : '🛒 Purchase'}
         </button>
       </div>
     </div>

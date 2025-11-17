@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import.meta.env.VITE_BACKEND_URL;
 
 const SignUp = () => {
   const [username, setUsername] = useState('');
@@ -38,7 +39,7 @@ const SignUp = () => {
 
     try {
       // Dummy API call (replace with actual endpoint later)
-      const response = await fetch('https://incubyte-assignment.onrender.com/route/auth/signup', {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/route/auth/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -74,7 +75,7 @@ const SignUp = () => {
     <div className="min-h-screen bg-linear-to-br from-red-400 via-pink-400 to-pink-400 flex flex-col items-center justify-center p-4">
       {/* Welcome Text */}
       <h1 className="text-5xl md:text-6xl font-bold text-white mb-8 text-center drop-shadow-2xl">
-        Welcome to <span className="text-purple-500">Sweet Shope</span>!
+        Welcome to <span className="text-purple-500">Sweet Shop</span>!
       </h1>
       
       <div className="bg-white rounded-lg shadow-2xl w-full max-w-md p-8">

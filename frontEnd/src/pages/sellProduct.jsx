@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './components/navBar';
 import SellerProductCard from './components/sellerProductCard';
 import ProductForm from './components/createProduct';
+import.meta.env.VITE_BACKEND_URL;
 
 const SellProduct = () => {
   const [products, setProducts] = useState([]);
@@ -25,7 +26,7 @@ const SellProduct = () => {
       try {
         const user = JSON.parse(localStorage.getItem('user') || '{}');
         // Dummy API endpoint - fetch products by username
-        const response = await fetch(`https://incubyte-assignment.onrender.com/route/product/seller/${user.username}`);
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/route/product/seller/${user.username}`);
         const data = await response.json();
         // setProducts(data);
         // setFilteredProducts(data);

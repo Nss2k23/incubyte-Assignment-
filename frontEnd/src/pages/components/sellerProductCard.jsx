@@ -46,3 +46,6 @@ const SellerProductCard = ({ product, onEdit, onDelete }) => {
 };
 
 export default SellerProductCard;
+
+
+
