@@ -5,9 +5,9 @@ Built with responsiveness, real-world features, and smooth UI/UX in mind.
 
 🌍 Live Preview
 
-Frontend (React App): [Add Your Vercel URL Here]
+Frontend (React App): https://incubyte-assignment-zeta.vercel.app
 
-Backend API: [Add Your Render / Cyclic URL Here]
+Backend API: https://incubyte-assignment.onrender.com
 
 🔐 Demo Credentials (Optional)
 
