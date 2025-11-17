@@ -30,6 +30,7 @@ const Home = () => {
       return;
     }
 
+    //API
     const fetchSweets = async () => {
       try {
         const response = await fetch(`${BACKEND_URL}/route/product`);
