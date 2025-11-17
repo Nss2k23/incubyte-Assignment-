@@ -14,7 +14,7 @@
 2) **Username:** Assignment2  
    **Password:** Assignment2  
 
-   
+---
 ## 📌 1) Project Description
 Sweet Store is a full-stack **MERN** application where users can **sell and buy sweets**. Each authenticated user can add, edit, and delete their own products, while also browsing and purchasing sweets added by other users.
 
