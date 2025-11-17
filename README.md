@@ -158,7 +158,7 @@ http://localhost:5173
 
 ---
 
-### Screenshots of Final Apllication
+### Screenshots of Final Application
 
 ![SS1](./assets/Screenshot%202025-11-18%20032921.png)
 ![SS2](./assets/Screenshot%202025-11-18%20032913.png)
