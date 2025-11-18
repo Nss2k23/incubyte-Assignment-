@@ -68,7 +68,7 @@ I used AI tools to speed up development, debug faster, and refine logic—while 
 - Suggested improvements in UI/UX and code structure
 - Helped refactor components while maintaining consistency
 
-AI served only as a coding assistant—**not** a code generator. All final logic and implementations were manually reviewed and written by me.
+AI served as a coding assistant. All final logic and implementations were manually reviewed and written by me.
 
 ---
 
