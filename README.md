@@ -92,7 +92,7 @@ AI served only as a coding assistant—**not** a code generator. All final logic
 
 ### **1️⃣ Clone the Repository**
 ```sh
-git clone <your-repo-url>
+git clone <my-repo-url>
 cd project-folder
 ```
 
